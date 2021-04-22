@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>闭包</title>
+      <link href="2021/03227415.html"/>
+      <url>2021/03227415.html</url>
+      
+        <content type="html"><![CDATA[<p>闭包（closure）是 JavasSript 的一大难点，也是它的特色。很多高级应用都要依靠闭包来实现。</p><h2 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h2><ul><li><p>要理解闭包，首先要理解 JavasSript 的特殊的变量作用域。</p></li><li><p>变量的作用域无非就两种：*<em>全局变量和局部变量</em>。</p></li><li><p>JavasSript 语言的特别之处就在于：函数内部可以直接读取全局变量，但是在函数外部无法读取函数内部的局部变量。</p></li><li><p>注意点：<em>在函数内部声明变量的时候，一定要使用 var 命令。如果不用的话，你实际上声明的是一个全局变量！</em></p></li></ul><h2 id="如何从外部读取函数内部的局部变量？"><a href="#如何从外部读取函数内部的局部变量？" class="headerlink" title="如何从外部读取函数内部的局部变量？"></a>如何从外部读取函数内部的局部变量？</h2><ul><li><p>出于种种原因，我们有时候需要获取到函数内部的局部变量。但是，上面已经说过了，正常情况下，这是办不到的！只有通过变通的方法才能实现。</p></li><li><p>那就是在函数内部，再定义一个函数。</p></li></ul><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">123</span><span class="token punctuation">;</span>    <span class="token keyword">function</span> <span class="token function">func2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>        <span class="token function">alert</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 123</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><ul><li><p>在上面的代码中，函数 func2 就被包括在函数 func1 内部，这时 func1 内部的所有局部变量，对 func2 都是可见的。但是反过来就不行，f2 内部的局部变量，对 func1 就是不可见的。</p></li><li><p>这就是 JavasSript 语言特有的”链式作用域”结构（chain scope），</p></li><li><p>子对象会一级一级地向上寻找所有父对象的变量。所以，父对象的所有变量，对子对象都是可见的，反之则不成立。</p></li><li><p>既然 func2 可以读取 func1 中的局部变量，那么只要把 func2 作为返回值，我们不就可以在 func1 外部读取它的内部变量了吗！</p></li></ul><h2 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h2><ul><li><p>上面代码中的 func2 函数，就是闭包。</p></li><li><p>各种专业文献的闭包定义都非常抽象，我的理解是: <em>闭包就是能够读取其他函数内部变量的函数。</em></p></li><li><p>由于在 JavasSript 中，只有函数内部的子函数才能读取局部变量，所以说，闭包可以简单理解成”定义在一个函数内部的函数”。</p></li><li><p>所以，在本质上，<em>闭包是将函数内部和函数外部连接起来的桥梁。</em></p></li></ul><h2 id="使用闭包的注意点"><a href="#使用闭包的注意点" class="headerlink" title="使用闭包的注意点"></a>使用闭包的注意点</h2><ul><li><p>由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，<em>在退出函数之前，将不使用的局部变量全部删除</em>。</p></li><li><p>闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 闭包 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>bind-background</title>
+      <link href="2021/03222423.html"/>
+      <url>2021/03222423.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="vue-行内样式绑定-background-使用变量"><a href="#vue-行内样式绑定-background-使用变量" class="headerlink" title="vue 行内样式绑定 background 使用变量"></a>vue 行内样式绑定 background 使用变量</h2><p>前两天在开发项目时遇到的问题，切换主题样式时，根据主题变量切换不同的背景图片，根据<em>变量绑定不同类名</em>这种方法可以实现，但是需要在 css 中写很多种类名，维护起来不方便，所以想到把 background 绑定在行内样式，使用变量切换图片。</p><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">:</span><span class="token style-attr language-css"><span class="token attr-name"><span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> <span class="token string">'url('</span> + url + <span class="token string">') no-repeat center'</span> <span class="token punctuation">}</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre><pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> mapState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vuex'</span><span class="token punctuation">;</span><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">return</span> <span class="token punctuation">{</span>      url<span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 切换主题时动态变换的图片地址</span>    <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span>  computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>    <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token string">'theme'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'activeName'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">this</span><span class="token punctuation">.</span>url <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`@/assets/image/theme/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>activeName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/oval.png`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span>  watch<span class="token punctuation">:</span> <span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">// 监听主题变化，赋值新的背景图片</span>    <span class="token function">activeName</span><span class="token punctuation">(</span>newVal<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">this</span><span class="token punctuation">.</span>url <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`@/assets/image/theme/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>newVal<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/oval.png`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+            <tag> 绑定background使用变量 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>var-let-const</title>
+      <link href="2021/032258734.html"/>
+      <url>2021/032258734.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="var、let、const-的区别"><a href="#var、let、const-的区别" class="headerlink" title="var、let、const 的区别"></a>var、let、const 的区别</h2><p><em>随着 ES6 的到来，var 已经不再是单一的定义变量的方法。</em></p><h3 id="var"><a href="#var" class="headerlink" title="var"></a>var</h3><p>一、首先用 var 定义变量有这样的 bug：</p><ul><li>js 没有块级作用域，在 js 函数中用 var 定义变量，其作用域是整个函数体的全部。<br>我们在 for 循环的外面可以拿到 for 循环里面定义的变量。</li></ul><pre class=" language-js"><code class="language-js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token punctuation">}</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><span id="more"></span><ul><li>循环内变量过度共享<br>下面的 for 循环，输出结果是三个 3，循环本身和三次 timeout 的回调均共享唯一的变量 i，当循环结束执行的时候，i 的值为 3。所以当第一个 timeout 执行时，调用的 i 值为 3，所以输出了三个 3。</li></ul><pre class=" language-js"><code class="language-js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><p>二、let，超级好用的！</p><ul><li><strong>使用 let 声明的变量拥有块级作用域。</strong>使用 let 声明的变量的作用域只是外层块，并不是整个外层函数。let 声明仍保留了提升特性，但不会盲目提升，在用 var 定义变量的例子一中，我们采用 let 替代 var 来定义变量，这样我们在 for 循环外面就拿不到 let 定义的变量。</li><li><strong>使用 let 声明的全局变量不是全局对象的属性。</strong>我们用 let 定义的变量是不能通过 window.变量名的方式来访问这些变量，它们存在于一个不可见的块级作用域中。</li><li><strong>形如 for(let i…)的循环在每次迭代的时候都会为 i 创建新的绑定。</strong>就像 var 中的第二个例子，如果一个循环执行多次，并且循环都保持了一个闭包，那么每个闭包将会拿到循环变量的不同值，而不是像 var 定义的变量那样，所有闭包都拿到循环变量的同一个值。</li></ul><h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>三、cosnt，声明常量！</p><ul><li>const 是用来声明定义常量的，在 ES6 中，const 声明的常量类似于指针，它指向某个引用，也就是说这个常量并非一成不变的，比如：</li></ul><pre class=" language-js"><code class="language-js"><span class="token punctuation">{</span>  <span class="token keyword">const</span> ARR <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//var ARR = [5,6]</span>  ARR<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ARR<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [5,6,7]</span>  ARR <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// TypeError   若用var定义变量，则ARR可以赋值</span>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ARR<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><ul><li>我们用 const 定义的数组，是可以操作数组在数组里面添加数据的，但是我们不能给这个变量重新赋值，const <strong>不能只声明不赋值，const 在使用时，请使用大写变量</strong>！</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> var </tag>
+            
+            <tag> let </tag>
+            
+            <tag> const </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
