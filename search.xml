@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>copy</title>
+      <link href="2021/042631690.html"/>
+      <url>2021/042631690.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="Vue-中实现复制粘贴"><a href="#Vue-中实现复制粘贴" class="headerlink" title="Vue 中实现复制粘贴"></a>Vue 中实现复制粘贴</h1><h2 id="HTML-部分代码"><a href="#HTML-部分代码" class="headerlink" title="HTML 部分代码"></a>HTML 部分代码</h2><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>要复制的信息：{{ copyInfo }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>copy(copyInfo)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>点击复制<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre><h2 id="js-部分代码"><a href="#js-部分代码" class="headerlink" title="js 部分代码"></a>js 部分代码</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">return</span> <span class="token punctuation">{</span>      copyInfo<span class="token punctuation">:</span> <span class="token string">"我是被你复制的信息"</span><span class="token punctuation">,</span>    <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span>  methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>    <span class="token function">copy</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">var</span> xxInput <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//创建一个隐藏input（重要！）</span>      xxInput<span class="token punctuation">.</span>value <span class="token operator">=</span> msg<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//赋值</span>      document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>xxInput<span class="token punctuation">)</span><span class="token punctuation">;</span>      xxInput<span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 选择对象</span>      document<span class="token punctuation">.</span><span class="token function">execCommand</span><span class="token punctuation">(</span><span class="token string">"Copy"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 执行浏览器的复制命令</span>      xxInput<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">"xxInput"</span><span class="token punctuation">;</span>      xxInput<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">"none"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 隐藏input</span>      <span class="token keyword">this</span><span class="token punctuation">.</span>$message<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">"复制成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre><p>很简单就可以实现了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js实现复制粘贴 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>prototype</title>
       <link href="2021/042318061.html"/>
       <url>2021/042318061.html</url>
