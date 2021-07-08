@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Vue知识点汇总</title>
+      <link href="2021/050845794.html"/>
+      <url>2021/050845794.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="Vue-知识点汇总（持续更新中…）"><a href="#Vue-知识点汇总（持续更新中…）" class="headerlink" title="Vue 知识点汇总（持续更新中…）"></a>Vue 知识点汇总（持续更新中…）</h1><h2 id="一、重要知识点"><a href="#一、重要知识点" class="headerlink" title="一、重要知识点"></a>一、重要知识点</h2><h3 id="1-Vue-中-key-值的作用和工作原理"><a href="#1-Vue-中-key-值的作用和工作原理" class="headerlink" title="1.Vue 中 key 值的作用和工作原理"></a>1.Vue 中 key 值的作用和工作原理</h3><p><strong>key 值的作用：</strong></p><ul><li>1.主要用在 Vue 的虚拟 DOM 算法，在新旧 nodes 对比时辨识 VNodes，相当于唯一标识 ID</li><li>2.Vue 会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染， 因此使用 key 值可以提高渲染效率，同理，改变某一元素的 key 值会使该元素重新被渲染。</li></ul><p><strong>key 的工作原理：</strong></p><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 因为key值主要使用在虚拟DOM算法，即diff算法中。所以我们在src\core\vdom\patch.js文件中，从源码级别进行探讨</span><span class="token comment" spellcheck="true">// 先说这里的核心方法patch。这个方法在vue进行update，即将render函数(虚拟DOM生成的函数)转化为真实DOM的时候执行，里面主要首次渲染创建真实DOM树，进行虚拟DOM节点直接的对比，以及真实DOM的更新的一系列操作，并且会进行一系列判断和兼容处理，其中就有对key值的具体使用</span><span class="token comment" spellcheck="true">// 这个方法主要在patch方法中调用</span><span class="token comment" spellcheck="true">// 方法名很语义化 sameVnode === 相同虚拟DOM节点</span><span class="token keyword">function</span> <span class="token function">sameVnode</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token keyword">return</span> <span class="token punctuation">(</span>    <span class="token comment" spellcheck="true">// 判断a, b两个Vnode上的key值是否相等</span>    a<span class="token punctuation">.</span>key <span class="token operator">===</span> b<span class="token punctuation">.</span>key <span class="token operator">&amp;&amp;</span>    <span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>tag <span class="token operator">===</span> b<span class="token punctuation">.</span>tag <span class="token operator">&amp;&amp;</span>      a<span class="token punctuation">.</span>isComment <span class="token operator">===</span> b<span class="token punctuation">.</span>isComment <span class="token operator">&amp;&amp;</span>      <span class="token function">isDef</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">isDef</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>      <span class="token function">sameInputType</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">||</span>      <span class="token punctuation">(</span><span class="token function">isTrue</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>isAsyncPlaceholder<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>        a<span class="token punctuation">.</span>asyncFactory <span class="token operator">===</span> b<span class="token punctuation">.</span>asyncFactory <span class="token operator">&amp;&amp;</span>        <span class="token function">isUndef</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>asyncFactory<span class="token punctuation">.</span>error<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token comment" spellcheck="true">// 在简单说下patchVnode方法的作用，这个方法会在patch方法里面调用，是直接对比新旧虚拟Vnode节点，也是diff算法真正执行的地方</span><span class="token comment" spellcheck="true">// 以下代码在patchVnode方法中</span><span class="token comment" spellcheck="true">// 在开始进行判断，符合条件的话就跳出方法，不再进行下面的diff对比</span><span class="token comment" spellcheck="true">// vnode.key === oldVnode.key判断双方是不是同一个组件</span><span class="token keyword">if</span> <span class="token punctuation">(</span>  <span class="token function">isTrue</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>isStatic<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>  <span class="token function">isTrue</span><span class="token punctuation">(</span>oldVnode<span class="token punctuation">.</span>isStatic<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>  vnode<span class="token punctuation">.</span>key <span class="token operator">===</span> oldVnode<span class="token punctuation">.</span>key <span class="token operator">&amp;&amp;</span>  <span class="token punctuation">(</span><span class="token function">isTrue</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>isCloned<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">isTrue</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>isOnce<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  vnode<span class="token punctuation">.</span>componentInstance <span class="token operator">=</span> oldVnode<span class="token punctuation">.</span>componentInstance<span class="token punctuation">;</span>  <span class="token keyword">return</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><p>在例子中可以看出，对 Vnode 进行 patch 的时候会调用 sameVnode 方法，里面会使用 key 值是否相等来判断 Vnode 是否为同一个。并且在对比过程中作为组件复用的一个判断条件。<br>所以 key 值是在 DOM 树进行 diff 算法时候发挥作用。一个是用来判断新旧 Vnode 是否为同一个，从而进行下一步的比较以及渲染。另外一个作用就是判断组件是否可以复用，是否需要重新渲染。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue组件间通信</title>
       <link href="2021/042922513.html"/>
       <url>2021/042922513.html</url>
@@ -20,9 +39,9 @@
       
         <tags>
             
-            <tag> 组件传值 </tag>
-            
             <tag> Vue </tag>
+            
+            <tag> 组件传值 </tag>
             
         </tags>
       

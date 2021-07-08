@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="copy, 小管">
+    <meta name="keywords" content="Vue知识点汇总, 小管">
     <meta name="description" content="燕山大学 | 计算机科学与技术">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>copy | 小管的博客</title>
+    <title>Vue知识点汇总 | 小管的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -248,12 +248,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/source/medias/featureimages/2.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">copy</h1>
+                    <h1 class="description center-align post-title">Vue知识点汇总</h1>
                 </div>
             </div>
         </div>
@@ -369,23 +369,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/js%E5%AE%9E%E7%8E%B0%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4/">
-                                <span class="chip bg-color">js实现复制粘贴</span>
+                            <a href="/tags/Vue/">
+                                <span class="chip bg-color">Vue</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/JavaScript/" class="post-category">
-                                JavaScript
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -394,7 +385,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-26
+                    2021-05-08
                 </div>
                 
 
@@ -403,14 +394,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    125
+                    644
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -430,30 +421,48 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Vue-中实现复制粘贴"><a href="#Vue-中实现复制粘贴" class="headerlink" title="Vue 中实现复制粘贴"></a>Vue 中实现复制粘贴</h1><h2 id="HTML-部分代码"><a href="#HTML-部分代码" class="headerlink" title="HTML 部分代码"></a>HTML 部分代码</h2><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>要复制的信息：{{ copyInfo }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>copy(copyInfo)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>点击复制<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+                <h1 id="Vue-知识点汇总（持续更新中…）"><a href="#Vue-知识点汇总（持续更新中…）" class="headerlink" title="Vue 知识点汇总（持续更新中…）"></a>Vue 知识点汇总（持续更新中…）</h1><h2 id="一、重要知识点"><a href="#一、重要知识点" class="headerlink" title="一、重要知识点"></a>一、重要知识点</h2><h3 id="1-Vue-中-key-值的作用和工作原理"><a href="#1-Vue-中-key-值的作用和工作原理" class="headerlink" title="1.Vue 中 key 值的作用和工作原理"></a>1.Vue 中 key 值的作用和工作原理</h3><p><strong>key 值的作用：</strong></p>
+<ul>
+<li>1.主要用在 Vue 的虚拟 DOM 算法，在新旧 nodes 对比时辨识 VNodes，相当于唯一标识 ID</li>
+<li>2.Vue 会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染， 因此使用 key 值可以提高渲染效率，同理，改变某一元素的 key 值会使该元素重新被渲染。</li>
+</ul>
+<p><strong>key 的工作原理：</strong></p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 因为key值主要使用在虚拟DOM算法，即diff算法中。所以我们在src\core\vdom\patch.js文件中，从源码级别进行探讨</span>
+
+<span class="token comment" spellcheck="true">// 先说这里的核心方法patch。这个方法在vue进行update，即将render函数(虚拟DOM生成的函数)转化为真实DOM的时候执行，里面主要首次渲染创建真实DOM树，进行虚拟DOM节点直接的对比，以及真实DOM的更新的一系列操作，并且会进行一系列判断和兼容处理，其中就有对key值的具体使用</span>
+
+<span class="token comment" spellcheck="true">// 这个方法主要在patch方法中调用</span>
+<span class="token comment" spellcheck="true">// 方法名很语义化 sameVnode === 相同虚拟DOM节点</span>
+<span class="token keyword">function</span> <span class="token function">sameVnode</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token comment" spellcheck="true">// 判断a, b两个Vnode上的key值是否相等</span>
+    a<span class="token punctuation">.</span>key <span class="token operator">===</span> b<span class="token punctuation">.</span>key <span class="token operator">&amp;&amp;</span>
+    <span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>tag <span class="token operator">===</span> b<span class="token punctuation">.</span>tag <span class="token operator">&amp;&amp;</span>
+      a<span class="token punctuation">.</span>isComment <span class="token operator">===</span> b<span class="token punctuation">.</span>isComment <span class="token operator">&amp;&amp;</span>
+      <span class="token function">isDef</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">isDef</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+      <span class="token function">sameInputType</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">||</span>
+      <span class="token punctuation">(</span><span class="token function">isTrue</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>isAsyncPlaceholder<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+        a<span class="token punctuation">.</span>asyncFactory <span class="token operator">===</span> b<span class="token punctuation">.</span>asyncFactory <span class="token operator">&amp;&amp;</span>
+        <span class="token function">isUndef</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>asyncFactory<span class="token punctuation">.</span>error<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 在简单说下patchVnode方法的作用，这个方法会在patch方法里面调用，是直接对比新旧虚拟Vnode节点，也是diff算法真正执行的地方</span>
+
+<span class="token comment" spellcheck="true">// 以下代码在patchVnode方法中</span>
+<span class="token comment" spellcheck="true">// 在开始进行判断，符合条件的话就跳出方法，不再进行下面的diff对比</span>
+<span class="token comment" spellcheck="true">// vnode.key === oldVnode.key判断双方是不是同一个组件</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>
+  <span class="token function">isTrue</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>isStatic<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+  <span class="token function">isTrue</span><span class="token punctuation">(</span>oldVnode<span class="token punctuation">.</span>isStatic<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+  vnode<span class="token punctuation">.</span>key <span class="token operator">===</span> oldVnode<span class="token punctuation">.</span>key <span class="token operator">&amp;&amp;</span>
+  <span class="token punctuation">(</span><span class="token function">isTrue</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>isCloned<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">isTrue</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>isOnce<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  vnode<span class="token punctuation">.</span>componentInstance <span class="token operator">=</span> oldVnode<span class="token punctuation">.</span>componentInstance<span class="token punctuation">;</span>
+  <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<h2 id="js-部分代码"><a href="#js-部分代码" class="headerlink" title="js 部分代码"></a>js 部分代码</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      copyInfo<span class="token punctuation">:</span> <span class="token string">"我是被你复制的信息"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token function">copy</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">var</span> xxInput <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//创建一个隐藏input（重要！）</span>
-      xxInput<span class="token punctuation">.</span>value <span class="token operator">=</span> msg<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//赋值</span>
-      document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>xxInput<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      xxInput<span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 选择对象</span>
-      document<span class="token punctuation">.</span><span class="token function">execCommand</span><span class="token punctuation">(</span><span class="token string">"Copy"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 执行浏览器的复制命令</span>
-      xxInput<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">"xxInput"</span><span class="token punctuation">;</span>
-      xxInput<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">"none"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 隐藏input</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>$message<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">"复制成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre>
-<p>很简单就可以实现了</p>
+<p>在例子中可以看出，对 Vnode 进行 patch 的时候会调用 sameVnode 方法，里面会使用 key 值是否相等来判断 Vnode 是否为同一个。并且在对比过程中作为组件复用的一个判断条件。<br>所以 key 值是在 DOM 树进行 diff 算法时候发挥作用。一个是用来判断新旧 Vnode 是否为同一个，从而进行下一步的比较以及渲染。另外一个作用就是判断组件是否可以复用，是否需要重新渲染。</p>
 
                 
             </div>
@@ -480,7 +489,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gxybee.cn/2021/042631690.html">https://gxybee.cn/2021/042631690.html</a>
+                    <a href="https://gxybee.cn/2021/050845794.html">https://gxybee.cn/2021/050845794.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -518,8 +527,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/js%E5%AE%9E%E7%8E%B0%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4/">
-                                    <span class="chip bg-color">js实现复制粘贴</span>
+                                <a href="/tags/Vue/">
+                                    <span class="chip bg-color">Vue</span>
                                 </a>
                             
                         </div>
@@ -689,17 +698,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/042747912.html">
+                <a href="/2021/050845794.html">
                     <div class="card-image">
                         
+                        <img src="/source/medias/featureimages/2.png" class="responsive-img" alt="Vue知识点汇总">
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="数组去重">
-                        
-                        <span class="card-title">数组去重</span>
+                        <span class="card-title">Vue知识点汇总</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -709,30 +718,23 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-08
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/JavaScript/" class="post-category">
-                                    JavaScript
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            小管
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/">
-                        <span class="chip bg-color">数组去重</span>
-                    </a>
-                    
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
                     </a>
                     
                 </div>
@@ -746,13 +748,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/042318061.html">
+                <a href="/2021/042922513.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="prototype">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Vue组件间通信">
                         
-                        <span class="card-title">prototype</span>
+                        <span class="card-title">Vue组件间通信</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -763,14 +765,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-29
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaScript/" class="post-category">
-                                    JavaScript
+                            <a href="/categories/Vue/" class="post-category">
+                                    Vue
                                 </a>
                             
                             
@@ -780,8 +782,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/">
-                        <span class="chip bg-color">原型与原型链</span>
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/">
+                        <span class="chip bg-color">组件传值</span>
                     </a>
                     
                 </div>
