@@ -394,14 +394,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    644
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -468,6 +468,28 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>在例子中可以看出，对 Vnode 进行 patch 的时候会调用 sameVnode 方法，里面会使用 key 值是否相等来判断 Vnode 是否为同一个。并且在对比过程中作为组件复用的一个判断条件。<br>所以 key 值是在 DOM 树进行 diff 算法时候发挥作用。一个是用来判断新旧 Vnode 是否为同一个，从而进行下一步的比较以及渲染。另外一个作用就是判断组件是否可以复用，是否需要重新渲染。</p>
+<h3 id="2-父子组件传参，调用方法"><a href="#2-父子组件传参，调用方法" class="headerlink" title="2.父子组件传参，调用方法"></a>2.父子组件传参，调用方法</h3><p>这部分的介绍在我另一篇文章中介绍了，具体请点击<a href="http://gxybee.cn/2021/042922513.html"> Vue 组件间通信》</a>查看</p>
+<h3 id="3-Vue-等单页面应用及其优点"><a href="#3-Vue-等单页面应用及其优点" class="headerlink" title="3.Vue 等单页面应用及其优点"></a>3.Vue 等单页面应用及其优点</h3><p><strong>优点：</strong></p>
+<ul>
+<li>具有桌面应用的即时性、网站的可移植性和可访问性。</li>
+<li>用户体验好、快，内容的改变不需要重新加载整个页面。</li>
+<li>基于上面一点，SPA 相对对服务器压力小。</li>
+<li>良好的前后端分离。SPA 和 RESTful 架构一起使用，后端不再负责模板渲染、输出页面工作，web 前端和各种移动终端地位对等，后端 API 通用化。</li>
+<li>同一套后端程序代码，不用修改就可以用于 Web 界面、手机、平板等多种客户端；</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>不利于 SEO。（如果你看中 SEO，那就不应该在页面上使用 JavaScript，你应该使用网站而不是 Web 应用）</li>
+<li>初次加载耗时相对增多。</li>
+<li>导航不可用，如果一定要导航需要自行实现前进、后退。</li>
+</ul>
+<h2 id="二、v-if、v-show-指令的共同点和不同点"><a href="#二、v-if、v-show-指令的共同点和不同点" class="headerlink" title="二、v-if、v-show 指令的共同点和不同点"></a>二、v-if、v-show 指令的共同点和不同点</h2><p><strong>共同点：</strong></p>
+<p>都能控制元素的显示和隐藏</p>
+<p><strong>不同点：</strong></p>
+<p>实现的本质方法不同，v-show 是通过控制元素的样式属性，把 display 设置为 none，控制隐藏；v-if 是动态的向 DOM 树内添加或者删除 DOM 元素，若初始值为 false，就不会编译了，v-if 不停的销毁和创建必然消耗性能。</p>
+<p><strong>总结：</strong></p>
+<p>若要频繁切换节点，使用 v-show。若不需要频繁切换节点显示隐藏使用 v-if</p>
+<h2 id="三、Vue-的生命周期"><a href="#三、Vue-的生命周期" class="headerlink" title="三、Vue 的生命周期"></a>三、Vue 的生命周期</h2><p><img src="/lifeCycle.png" alt="生命周期"></p>
 
                 
             </div>
@@ -788,12 +810,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
-                    </a>
-                    
                     <a href="/tags/%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/">
                         <span class="chip bg-color">组件传值</span>
+                    </a>
+                    
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
                     </a>
                     
                 </div>
@@ -996,7 +1018,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5k</span>&nbsp;字
+                class="white-color">5.4k</span>&nbsp;字
             
             
             
