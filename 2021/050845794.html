@@ -394,14 +394,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    6 分
                 </div>
                 
 
@@ -489,7 +489,97 @@
 <p>实现的本质方法不同，v-show 是通过控制元素的样式属性，把 display 设置为 none，控制隐藏；v-if 是动态的向 DOM 树内添加或者删除 DOM 元素，若初始值为 false，就不会编译了，v-if 不停的销毁和创建必然消耗性能。</p>
 <p><strong>总结：</strong></p>
 <p>若要频繁切换节点，使用 v-show。若不需要频繁切换节点显示隐藏使用 v-if</p>
-<h2 id="三、Vue-的生命周期"><a href="#三、Vue-的生命周期" class="headerlink" title="三、Vue 的生命周期"></a>三、Vue 的生命周期</h2><p><img src="/lifeCycle.png" alt="生命周期"></p>
+<h2 id="三、Vue-的生命周期"><a href="#三、Vue-的生命周期" class="headerlink" title="三、Vue 的生命周期"></a>三、Vue 的生命周期</h2><p><img src="/2021/050845794/lifeCycle.png" alt="生命周期"></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>钩子函数</th>
+<th>触发的行为</th>
+<th>此阶段可以做什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>beforeCreadted</td>
+<td>vue 实例的挂载元素$el 和数据对象 data 都为 undefined，还未初始化。</td>
+<td>加 loading 事件</td>
+</tr>
+<tr>
+<td>2</td>
+<td>created</td>
+<td>vue 实例的数据对象 data 有了，$el 还没有</td>
+<td>结束 loading、请求数据为 mounted 渲染做准备</td>
+</tr>
+<tr>
+<td>3</td>
+<td>beforeMount</td>
+<td>vue 实例的$el 和 data 都初始化了，但还是虚拟的 dom 节点，具体的 data.filter 还未替换。</td>
+<td>…</td>
+</tr>
+<tr>
+<td>4</td>
+<td>mounted</td>
+<td>vue 实例挂载完成，data.filter 成功渲染</td>
+<td>配合路由钩子使用</td>
+</tr>
+<tr>
+<td>5</td>
+<td>beforeUpdate</td>
+<td>data 更新时触发</td>
+<td>…</td>
+</tr>
+<tr>
+<td>6</td>
+<td>updated</td>
+<td>data 更新时触发</td>
+<td>数据更新时，做一些处理（此处也可以用 watch 进行观测）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>beforeDestroy</td>
+<td>组件销毁时触发</td>
+<td>…</td>
+</tr>
+<tr>
+<td>8</td>
+<td>destroyed</td>
+<td>组件销毁时触发，vue 实例解除了事件监听以及和 dom 的绑定（无响应了），但 DOM 节点依旧存在</td>
+<td>组件销毁时进行提示</td>
+</tr>
+</tbody></table>
+<h2 id="四、指令-v-el-的作用是什么？"><a href="#四、指令-v-el-的作用是什么？" class="headerlink" title="四、指令 v-el 的作用是什么？"></a>四、指令 v-el 的作用是什么？</h2><p>提供一个在页面上已存在的 DOM 元素作为 Vue 实例的挂载目标.可以是 CSS 选择器，也可以是一个 HTMLElement 实例。</p>
+<h2 id="五、简述-Vuex-的原理和使用方法"><a href="#五、简述-Vuex-的原理和使用方法" class="headerlink" title="五、简述 Vuex 的原理和使用方法"></a>五、简述 Vuex 的原理和使用方法</h2><p><img src="/2021/050845794/Vuex.png" alt="Vuex"></p>
+<p>数据单向流动</p>
+<p>一个应用可以看作是由上面三部分组成: View, Actions,State,数据的流动也是从 View =&gt; Actions =&gt; State =&gt;View 以此达到数据的单向流动.</p>
+<p>但是项目较大的, 组件嵌套过多的时候, 多组件共享同一个 State 会在数据传递时出现很多问题.Vuex 就是为了解决这些问题而产生的.</p>
+<p>Vuex 可以被看作项目中所有组件的数据中心,我们将所有组件中共享的 State 抽离出来,任何组件都可以访问和操作我们的数据中心</p>
+<p>Vuex 的组成：一个实例化的 Vuex.Store 由 state, mutations 和 actions 三个属性组成:</p>
+<ul>
+<li>state 中保存着共有数据</li>
+<li>改变 state 中的数据有且只有通过 mutations 中的方法,且 mutations 中的方法必须是同步的</li>
+<li>如果要写异步的方法,需要些在 actions 中, 并通过 commit 到 mutations 中进行 state 中数据的更改</li>
+</ul>
+<h2 id="六、Vue-watch-的高级用法–监听对象的属性变化"><a href="#六、Vue-watch-的高级用法–监听对象的属性变化" class="headerlink" title="六、Vue watch 的高级用法–监听对象的属性变化"></a>六、Vue watch 的高级用法–监听对象的属性变化</h2><p>1.监听对象需要深度监听</p>
+<pre class=" language-js"><code class="language-js">watch<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  obj<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token function">handler</span><span class="token punctuation">(</span>newVal<span class="token punctuation">,</span> oldVal<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newVal<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    deep<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2.监听对象里面某个属性的变化，可以通过 computed 做中间层实现</p>
+<pre class=" language-js"><code class="language-js">watch<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  nm <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>nm<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  nm <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>userinfo<span class="token punctuation">.</span>name <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 
                 
             </div>
@@ -725,18 +815,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/050845794.html">
+                <a href="/2021/071449298.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Vue知识点汇总（持续更新中...）">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="禁止obj对象添加/删除元素">
                         
-                        <span class="card-title">Vue知识点汇总（持续更新中...）</span>
+                        <span class="card-title">禁止obj对象添加/删除元素</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -746,9 +835,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-08
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-14
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -757,12 +846,11 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
@@ -1018,7 +1106,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.4k</span>&nbsp;字
+                class="white-color">6.7k</span>&nbsp;字
             
             
             
