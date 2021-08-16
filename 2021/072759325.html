@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="bind-background, 小管">
+    <meta name="keywords" content="对象的属性与方法, 小管">
     <meta name="description" content="燕山大学 | 计算机科学与技术">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>bind-background | 小管的博客</title>
+    <title>对象的属性与方法 | 小管的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -248,12 +248,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">bind-background</h1>
+                    <h1 class="description center-align post-title">对象的属性与方法</h1>
                 </div>
             </div>
         </div>
@@ -369,12 +369,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/vue/">
-                                <span class="chip bg-color">vue</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%BB%91%E5%AE%9Abackground%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F/">
-                                <span class="chip bg-color">绑定background使用变量</span>
+                            <a href="/tags/JavaScript/">
+                                <span class="chip bg-color">JavaScript</span>
                             </a>
                         
                     </div>
@@ -385,8 +381,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Vue/" class="post-category">
-                                Vue
+                            <a href="/categories/JavaScript/" class="post-category">
+                                JavaScript
                             </a>
                         
                     </div>
@@ -398,7 +394,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-22
+                    2021-07-27
                 </div>
                 
 
@@ -407,7 +403,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    182
+                    224
                 </div>
                 
 
@@ -439,30 +435,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="vue-行内样式绑定-background-使用变量"><a href="#vue-行内样式绑定-background-使用变量" class="headerlink" title="vue 行内样式绑定 background 使用变量"></a>vue 行内样式绑定 background 使用变量</h2><p>前两天在开发项目时遇到的问题，切换主题样式时，根据主题变量切换不同的背景图片，根据<em>变量绑定不同类名</em>这种方法可以实现，但是需要在 css 中写很多种类名，维护起来不方便，所以想到把 background 绑定在行内样式，使用变量切换图片。</p>
-<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">:</span><span class="token style-attr language-css"><span class="token attr-name"><span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> <span class="token string">'url('</span> + url + <span class="token string">') no-repeat center'</span> <span class="token punctuation">}</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-</code></pre>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> mapState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vuex'</span><span class="token punctuation">;</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      url<span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 切换主题时动态变换的图片地址</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token string">'theme'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'activeName'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>url <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`@/assets/image/theme/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>activeName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/oval.png`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  watch<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 监听主题变化，赋值新的背景图片</span>
-    <span class="token function">activeName</span><span class="token punctuation">(</span>newVal<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>url <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`@/assets/image/theme/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>newVal<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/oval.png`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre>
+                <h1 id="对象的属性与方法"><a href="#对象的属性与方法" class="headerlink" title="对象的属性与方法"></a>对象的属性与方法</h1><p>每个 Object 实例都有如下属性和方法:</p>
+<ul>
+<li>constructor：用于创建当前对象的函数。在前面的例子中，这个属性的值就是 Object() 函数。</li>
+<li>hasOwnProperty(propertyName)：用于判断当前对象实例（不是原型）上是否存在给定的属性。要检查的属性名必须是字符串（如 o.hasOwnProperty(“name”)）或符号。</li>
+<li>isPrototypeOf(object)：用于判断当前对象是否为另一个对象的原型。</li>
+<li>propertyIsEnumerable(propertyName)：用于判断给定的属性是否可以使用 for-in 语句枚举。与 hasOwnProperty()一样，属性名必须是字符串。</li>
+<li>toLocaleString()：返回对象的字符串表示，该字符串反映对象所在的本地化执行环境。</li>
+<li>toString()：返回对象的字符串表示。</li>
+<li>valueOf()：返回对象对应的字符串、数值或布尔值表示。通常与 toString()的返回值相同。</li>
+</ul>
 
                 
             </div>
@@ -489,7 +471,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gxybee.cn/2021/03222423.html">https://gxybee.cn/2021/03222423.html</a>
+                    <a href="https://gxybee.cn/2021/072759325.html">https://gxybee.cn/2021/072759325.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -527,12 +509,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/vue/">
-                                    <span class="chip bg-color">vue</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%BB%91%E5%AE%9Abackground%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F/">
-                                    <span class="chip bg-color">绑定background使用变量</span>
+                                <a href="/tags/JavaScript/">
+                                    <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
                         </div>
@@ -702,17 +680,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03227415.html">
+                <a href="/2021/072759325.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="闭包">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="对象的属性与方法">
                         
-                        <span class="card-title">闭包</span>
+                        <span class="card-title">对象的属性与方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -722,9 +701,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -737,11 +716,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%97%AD%E5%8C%85/">
-                        <span class="chip bg-color">闭包</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
@@ -755,27 +735,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/032258734.html">
+                <a href="/2021/071449298.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="var-let-const">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="禁止obj对象添加/删除元素">
                         
-                        <span class="card-title">var-let-const</span>
+                        <span class="card-title">禁止obj对象添加/删除元素</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            var、let、const 的区别随着 ES6 的到来，var 已经不再是单一的定义变量的方法。
-var一、首先用 var 定义变量有这样的 bug：
-
-js 没有块级作用域，在 js 函数中用 var 定义变量，其作用域是整个函数体的全部
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-14
                             </span>
                         <span class="publish-author">
                             
@@ -792,16 +769,8 @@ js 没有块级作用域，在 js 函数中用 var 定义变量，其作用域�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/var/">
-                        <span class="chip bg-color">var</span>
-                    </a>
-                    
-                    <a href="/tags/let/">
-                        <span class="chip bg-color">let</span>
-                    </a>
-                    
-                    <a href="/tags/const/">
-                        <span class="chip bg-color">const</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>

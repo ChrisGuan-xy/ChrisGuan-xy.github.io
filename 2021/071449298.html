@@ -403,7 +403,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    831
+                    754
                 </div>
                 
 
@@ -448,11 +448,19 @@
 
 <span class="token comment" spellcheck="true">// 这样设置之后，prop属性就变成了不能删除、不可重新修改特性、不可枚举、不能修改的属性值的属性。</span>
 </code></pre>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">"Jackson"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">"Jackson"</span><span class="token punctuation">,</span> age<span class="token punctuation">:</span> <span class="token number">18</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 删除</span>
+<span class="token keyword">delete</span> person<span class="token punctuation">.</span>age<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// undefined</span>
+
 Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>person<span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
   writable<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
   configurable<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">delete</span> person<span class="token punctuation">.</span>name<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Jackson</span>
+
 <span class="token comment" spellcheck="true">// 修改</span>
 person<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"new name"</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Jackson</span>
@@ -462,7 +470,7 @@ person<span class="token punctuation">.</span>address <span class="token operato
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>address<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// beijing</span>
 </code></pre>
 <h2 id="二、Object-seal"><a href="#二、Object-seal" class="headerlink" title="二、Object.seal"></a>二、Object.seal</h2><p>Object.seal()方法可以封闭一个对象，阻止添加新属性并将其所有现有属性标记为不可配置。当前属性的值只要原来是可写的就可以改变。</p>
-<p>一个对象是可扩展的(可添加新的属性)。密封一个对象就会让这个对象变得不能添加新属性，而且所有已有属性都会变得不可配置。属性不可配置的效果就是不可删除属性，以及一个数据属性不能被重新定义成为访问器属性。但属性的值仍然可以修改。尝试删除一个封闭对象的属性或者将某个封闭对象的属性从数据属性转换成访问器属性，结果会静默失败或抛出 TypeError。</p>
+<p>一个对象是可扩展的(可添加新的属性)。密封一个对象就会让这个对象变得不能添加新属性，而且所有已有属性都会变得不可配置。属性不可配置的效果就是不可删除属性，但属性的值仍然可以修改。</p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
   name<span class="token punctuation">:</span> <span class="token string">"Jackson"</span><span class="token punctuation">,</span>
   func<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -521,10 +529,6 @@ person<span class="token punctuation">.</span><span class="token function">func<
 <span class="token keyword">let</span> freezePerson <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">freeze</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
 freezePerson<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"hu ge"</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>freezePerson<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// xing</span>
-<span class="token comment" spellcheck="true">// 严格模式下会报错</span>
-<span class="token punctuation">(</span><span class="token string">"use strict"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-freezePerson<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"hu ge"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// TypeError</span>
-<span class="token comment" spellcheck="true">//Uncaught TypeError: Cannot assign to read only property 'name' of object '#&lt;Object>'</span>
 
 <span class="token comment" spellcheck="true">// 但是info 是没有被冻结的</span>
 freezePerson<span class="token punctuation">.</span>info<span class="token punctuation">.</span>address <span class="token operator">=</span> <span class="token string">"beijing"</span><span class="token punctuation">;</span>
@@ -797,18 +801,17 @@ console.log(lockTraget.a); // 删不掉 -->
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/071449298.html">
+                <a href="/2021/072759325.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="禁止obj对象添加/删除元素">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="对象的属性与方法">
                         
-                        <span class="card-title">禁止obj对象添加/删除元素</span>
+                        <span class="card-title">对象的属性与方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -818,9 +821,9 @@ console.log(lockTraget.a); // 删不掉 -->
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-27
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -833,7 +836,6 @@ console.log(lockTraget.a); // 删不掉 -->
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1100,7 +1102,7 @@ console.log(lockTraget.a); // 删不掉 -->
         class="fas fa-chart-area"
       ></i
       >&nbsp;站点总字数:&nbsp;<span class="white-color"
-        >6.8k</span
+        >7k</span
       >&nbsp;字      
       <span id="busuanzi_container_site_pv" style='display:none'>
         |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span
