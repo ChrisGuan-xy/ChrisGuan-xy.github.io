@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://gxybee.cn/2021/03222423.html</loc>
+    <loc>https://gxybee.cn/2021/081723507.html</loc>
     
     <lastmod>2021-11-19</lastmod>
     
@@ -10,6 +10,20 @@
   
   <url>
     <loc>https://gxybee.cn/2021/081522157.html</loc>
+    
+    <lastmod>2021-11-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gxybee.cn/2021/032258734.html</loc>
+    
+    <lastmod>2021-11-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gxybee.cn/2021/03222423.html</loc>
     
     <lastmod>2021-11-19</lastmod>
     
@@ -75,13 +89,6 @@
     <loc>https://gxybee.cn/2021/03227415.html</loc>
     
     <lastmod>2021-03-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://gxybee.cn/2021/032258734.html</loc>
-    
-    <lastmod>2021-03-22</lastmod>
     
   </url>
   
@@ -165,27 +172,6 @@
   </url>
   
   <url>
-    <loc>https://gxybee.cn/tags/var/</loc>
-    <lastmod>2021-11-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gxybee.cn/tags/let/</loc>
-    <lastmod>2021-11-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://gxybee.cn/tags/const/</loc>
-    <lastmod>2021-11-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://gxybee.cn/tags/JavaScript/</loc>
     <lastmod>2021-11-19</lastmod>
     <changefreq>daily</changefreq>
@@ -220,6 +206,20 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://gxybee.cn/tags/var%E3%80%81let%E3%80%81const/</loc>
+    <lastmod>2021-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gxybee.cn/tags/img/</loc>
+    <lastmod>2021-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -238,6 +238,13 @@
   
   <url>
     <loc>https://gxybee.cn/categories/Css/</loc>
+    <lastmod>2021-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://gxybee.cn/categories/HTML/</loc>
     <lastmod>2021-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
