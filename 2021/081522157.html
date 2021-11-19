@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="清除浮动, 小管">
+    <meta name="keywords" content="strong和b标签的区别, 小管">
     <meta name="description" content="燕山大学 | 计算机科学与技术">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>清除浮动 | 小管的博客</title>
+    <title>strong和b标签的区别 | 小管的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,7 +231,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">清除浮动</h1>
+                    <h1 class="description center-align post-title">strong和b标签的区别</h1>
                 </div>
             </div>
         </div>
@@ -347,23 +347,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Css/">
-                                <span class="chip bg-color">Css</span>
+                            <a href="/tags/HTML/">
+                                <span class="chip bg-color">HTML</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Css/" class="post-category">
-                                Css
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -372,7 +363,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-14
+                    2021-08-15
                 </div>
                 
 
@@ -381,7 +372,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    323
+                    339
                 </div>
                 
 
@@ -413,28 +404,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="清除浮动的方法"><a href="#清除浮动的方法" class="headerlink" title="清除浮动的方法"></a>清除浮动的方法</h2><ul>
-<li>给父盒子设置高度</li>
-<li>clear: both</li>
-<li>通过伪元素清除</li>
-<li>overflow: hidden</li>
-</ul>
-<h3 id="给父盒子设置高度"><a href="#给父盒子设置高度" class="headerlink" title="给父盒子设置高度"></a>给父盒子设置高度</h3><p>我们可以通过给父盒子设置一个固定的高度，来清除浮动，但是这种方法的缺陷很明显，会固定死父盒子的高度</p>
-<h3 id="clear-both"><a href="#clear-both" class="headerlink" title="clear: both"></a>clear: both</h3><p>clear 有三个属性：left（当前元素左边不允许有浮动元素）、right（当前元素右边不允许有浮动元素）、both（当前元素的左右两边都不允许有浮动元素）</p>
-<p>给浮动元素后边加一个空的 div，并且该 div 不浮动，然后设置 clear: both 属性</p>
-<h3 id="通过伪元素清除"><a href="#通过伪元素清除" class="headerlink" title="通过伪元素清除"></a>通过伪元素清除</h3><p>给父盒子添加一个类名 clear-fix，该类名的属性如下：</p>
-<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style language-css">
-  <span class="token selector"><span class="token class">.clear-fix</span><span class="token pseudo-element">:after</span> </span><span class="token punctuation">{</span>
-    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">;</span>
-    <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
-    <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
-    <span class="token property">visibility</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-</code></pre>
-<h3 id="overflow-hidden"><a href="#overflow-hidden" class="headerlink" title="overflow: hidden"></a>overflow: hidden</h3><p>overflow 属性是当内容溢出元素框时，设置的属性</p>
-<p>属性值：</p>
-<p>visible: 默认值，内容不会被盖掉，直接呈现在元素框之外<br>hidden: 超出元素框之外的内容会被隐藏，且不可见<br>scroll: 超出元素框之外的内容会被隐藏，但是可以通过滚动条查看<br>auto: 自适应，若超出元素框，则通过滚动条查看<br>inherit: 从父元素继承 overflow 属性的值</p>
+                <p>在做网站的建设的时候，经常会遇到 b 标签和 strong 标签，而这两种标签的作用都是对自己加粗，起到一个强调性的作用， b 标签和 strong 标签有何区别？对优化有哪些影响？</p>
+<h2 id="1-b-标签和-strong-标签的区别"><a href="#1-b-标签和-strong-标签的区别" class="headerlink" title="1.b 标签和 strong 标签的区别"></a>1.b 标签和 strong 标签的区别</h2><p>b 标签和 strong 标签是两种不同的标签。</p>
+<p>b 标签表示粗体。它由字母 b 表示。b 标签可以强调的是字体外观的加粗效果。例如：<b>I am bold.</b></p>
+<p>但是，strong 标签是我们要强调的地方，这两个标签具有不同的含义。例如：<strong>强调字体</strong>。</p>
+<p>两者是非常不同的。strong 标签具有语义并充当强调作用，而 b 标签没有，b 标签只是一个简单的粗体标签。</p>
+<h2 id="2-b-标签和-strong-标签对-seo-的影响"><a href="#2-b-标签和-strong-标签对-seo-的影响" class="headerlink" title="2.b 标签和 strong 标签对 seo 的影响"></a>2.b 标签和 strong 标签对 seo 的影响</h2><p>b 标签之间的字符设置为粗体，strong 标签加字符的语义通过 strong 实现为粗体，搜索引擎更关注 strong 标签下的关键词。</p>
+<p>strong 标签更加面向内容。在 HTML 中，关键词被标记。然而，在一些网站上，strong 标签也用于强调字体。但是，如果页面上有太多的 strong 标签，可能不利于排名。所以虽然 strong 标签更利于排名，但也需较少的使用。</p>
 
                 
             </div>
@@ -461,7 +437,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gxybee.cn/2021/081459810.html">https://gxybee.cn/2021/081459810.html</a>
+                    <a href="https://gxybee.cn/2021/081522157.html">https://gxybee.cn/2021/081522157.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -499,8 +475,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Css/">
-                                    <span class="chip bg-color">Css</span>
+                                <a href="/tags/HTML/">
+                                    <span class="chip bg-color">HTML</span>
                                 </a>
                             
                         </div>
@@ -670,9 +646,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/081522157.html">
                     <div class="card-image">
@@ -690,9 +667,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -701,6 +678,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -719,13 +697,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/072759325.html">
+                <a href="/2021/081459810.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="对象的属性与方法">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="清除浮动">
                         
-                        <span class="card-title">对象的属性与方法</span>
+                        <span class="card-title">清除浮动</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -736,14 +714,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaScript/" class="post-category">
-                                    JavaScript
+                            <a href="/categories/Css/" class="post-category">
+                                    Css
                                 </a>
                             
                             
@@ -753,12 +731,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%83%82%E7%AC%94%E5%A4%B4/">
-                        <span class="chip bg-color">烂笔头</span>
+                    <a href="/tags/Css/">
+                        <span class="chip bg-color">Css</span>
                     </a>
                     
                 </div>
