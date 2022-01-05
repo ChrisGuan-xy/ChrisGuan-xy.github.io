@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>css隐藏元素的几种方法</title>
+      <link href="2021/113021992.html"/>
+      <url>2021/113021992.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-visibility-hidden"><a href="#1-visibility-hidden" class="headerlink" title="1.visibility: hidden"></a>1.visibility: hidden</h2><p>visibility 属性规定元素是否可见。将其值设置为 hidden，可以从视觉上隐藏元素，被隐藏的元素依旧占位。</p><h2 id="2-opacity-0"><a href="#2-opacity-0" class="headerlink" title="2.opacity: 0"></a>2.opacity: 0</h2><p>opacity 属性是设置元素的透明度。将其值设置为 0，可以从视觉上隐藏元素，被隐藏的元素依旧占位。</p><h2 id="3-display-none"><a href="#3-display-none" class="headerlink" title="3.display: none"></a>3.display: none</h2><p>display 属性可以真正的隐藏元素。将其值设置为 none，可以彻底隐藏该元素，不占位。</p><h2 id="4-position-absolute"><a href="#4-position-absolute" class="headerlink" title="4.position: absolute"></a>4.position: absolute</h2><p>给要隐藏的元素设置一个相对定位，把定位位置相对屏幕拉的非常远，比如 top 和 left 设置为-99999px，让其在屏幕上不可见，来满足隐藏的效果。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Css </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Css </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>label标签的作用</title>
       <link href="2021/082118849.html"/>
       <url>2021/082118849.html</url>
@@ -73,6 +98,31 @@
             <tag> HTML </tag>
             
             <tag> img </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>初始化样式</title>
+      <link href="2021/081650694.html"/>
+      <url>2021/081650694.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="CSS-初始化的含义"><a href="#CSS-初始化的含义" class="headerlink" title="CSS 初始化的含义"></a>CSS 初始化的含义</h2><p>CSS 初始化是指<strong>重设浏览器的样式</strong>。不同的浏览器默认的样式可能不尽相同，所以开发时的第一件事可能就是如何把它们统一，即将 CSS 初始化。</p><h2 id="为什么要-CSS-初始化"><a href="#为什么要-CSS-初始化" class="headerlink" title="为什么要 CSS 初始化"></a>为什么要 CSS 初始化</h2><p>这是为了考虑到浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对 CSS 初始化往往会出现浏览器之间的页面差异。<span style="color:red;">每次新开发网站或新网页时候通过初始化 CSS 样式的属性，为我们将用到的 CSS 或 html 标签更加方便准确，使得我们开发网页内容时更加方便简洁，同时减少 CSS 代码量，节约网页下载时间。</span>如果不初始化，整个页面做完会很糟糕，重复的 css 样式很多。当然，初始化样式会对 SEO 有一定的影响，但力求影响最小的情况下初始化。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Css </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Css </tag>
             
         </tags>
       
