@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>Vue-router路由模式</title>
+      <link href="2021/12207103.html"/>
+      <url>2021/12207103.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、路由模式解析"><a href="#一、路由模式解析" class="headerlink" title="一、路由模式解析"></a>一、路由模式解析</h2><p>要讲 vue-router 的路由模式，首先要了解的一点就是路由是由多个 URL 组成的，使用不同的 URL 可以相应的导航到不同的位置。</p><p>如果有进行过服务器开发或者对 http 协议有所了解就会知道，浏览器中对页面的访问是无状态的，所以我们在切换不同的页面时都会重新进行请求。而实际使用 vue 和 vue-router 开发就会明白，在切换页面时是没有重新进行请求的，使用起来就好像页面是有状态的，这是什么原因呢。</p><p>这其实是借助了浏览器的 History API 来实现的，这样可以使得页面跳转而不刷新，页面的状态就被维持在浏览器中了。</p><p>vue-router 默认使用的是<strong>hash 模式</strong>，这时候的 URL 是这样的：”localhost:8080/#/“，URL 中带有#号</p><p>可以用如下代码修改成<strong>history 模式</strong>：</p><pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">"vue"</span><span class="token punctuation">;</span><span class="token keyword">import</span> Router <span class="token keyword">from</span> <span class="token string">"vue-router"</span><span class="token punctuation">;</span><span class="token keyword">import</span> Index <span class="token keyword">from</span> <span class="token string">"@/views/index"</span><span class="token punctuation">;</span>Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Router<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span>  mode<span class="token punctuation">:</span> <span class="token string">"history"</span><span class="token punctuation">,</span>  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>    <span class="token punctuation">{</span>      path<span class="token punctuation">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span>      component<span class="token punctuation">:</span> Index<span class="token punctuation">,</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>。。。未完成</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+            <tag> 前端面经 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>css隐藏元素的几种方法</title>
       <link href="2021/113021992.html"/>
       <url>2021/113021992.html</url>
       
-        <content type="html"><![CDATA[<h2 id="1-visibility-hidden"><a href="#1-visibility-hidden" class="headerlink" title="1.visibility: hidden"></a>1.visibility: hidden</h2><p>visibility 属性规定元素是否可见。将其值设置为 hidden，可以从视觉上隐藏元素，被隐藏的元素依旧占位。</p><h2 id="2-opacity-0"><a href="#2-opacity-0" class="headerlink" title="2.opacity: 0"></a>2.opacity: 0</h2><p>opacity 属性是设置元素的透明度。将其值设置为 0，可以从视觉上隐藏元素，被隐藏的元素依旧占位。</p><h2 id="3-display-none"><a href="#3-display-none" class="headerlink" title="3.display: none"></a>3.display: none</h2><p>display 属性可以真正的隐藏元素。将其值设置为 none，可以彻底隐藏该元素，不占位。</p><h2 id="4-position-absolute"><a href="#4-position-absolute" class="headerlink" title="4.position: absolute"></a>4.position: absolute</h2><p>给要隐藏的元素设置一个相对定位，把定位位置相对屏幕拉的非常远，比如 top 和 left 设置为-99999px，让其在屏幕上不可见，来满足隐藏的效果。</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="1-visibility-hidden"><a href="#1-visibility-hidden" class="headerlink" title="1.visibility: hidden"></a>1.visibility: hidden</h2><p>visibility 属性规定元素是否可见。将其值设置为 hidden，可以从视觉上隐藏元素，被隐藏的元素依旧占位。</p><pre class=" language-css"><code class="language-css"><span class="token selector">div </span><span class="token punctuation">{</span>  <span class="token property">visibility</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><h2 id="2-opacity-0"><a href="#2-opacity-0" class="headerlink" title="2.opacity: 0"></a>2.opacity: 0</h2><p>opacity 属性是设置元素的透明度。将其值设置为 0，可以从视觉上隐藏元素，被隐藏的元素依旧占位。</p><pre class=" language-css"><code class="language-css"><span class="token selector">div </span><span class="token punctuation">{</span>  <span class="token property">opacity</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><h2 id="3-display-none"><a href="#3-display-none" class="headerlink" title="3.display: none"></a>3.display: none</h2><p>display 属性可以真正的隐藏元素。将其值设置为 none，可以彻底隐藏该元素，不占位。</p><pre class=" language-css"><code class="language-css"><span class="token selector">div </span><span class="token punctuation">{</span>  <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><h2 id="4-position-absolute"><a href="#4-position-absolute" class="headerlink" title="4.position: absolute"></a>4.position: absolute</h2><p>给要隐藏的元素设置一个相对定位，把定位位置相对屏幕拉的非常远，比如 top 和 left 设置为-99999px，让其在屏幕上不可见，来满足隐藏的效果。</p><pre class=" language-css"><code class="language-css"><span class="token selector">div </span><span class="token punctuation">{</span>  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>  <span class="token property">top</span><span class="token punctuation">:</span> -<span class="token number">99999</span>px<span class="token punctuation">;</span>  <span class="token property">left</span><span class="token punctuation">:</span> -<span class="token number">99999</span>px<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre>]]></content>
       
       
       <categories>
@@ -21,6 +48,50 @@
         <tags>
             
             <tag> Css </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>手写代码实现一个promise.all方法</title>
+      <link href="2021/100536464.html"/>
+      <url>2021/100536464.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="正常的-Promise-all-实现"><a href="#正常的-Promise-all-实现" class="headerlink" title="正常的 Promise.all 实现"></a>正常的 Promise.all 实现</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> p1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>    <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">11111</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">let</span> p2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>    <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">22222</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 两秒后输出['11111', '22222']</span></code></pre><h2 id="手写代码实现简单的-Promise-all"><a href="#手写代码实现简单的-Promise-all" class="headerlink" title="手写代码实现简单的 Promise.all"></a>手写代码实现简单的 Promise.all</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">myPromiseAll</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>    <span class="token keyword">let</span> resArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token keyword">let</span> num <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>    arr<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>      item<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>        resArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>        num<span class="token operator">++</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">===</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>          <span class="token function">resolve</span><span class="token punctuation">(</span>resArr<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token function">myPromiseAll</span><span class="token punctuation">(</span><span class="token punctuation">[</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 两秒后输出['11111', '22222']</span></code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Promise </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Doctype</title>
+      <link href="2021/091037350.html"/>
+      <url>2021/091037350.html</url>
+      
+        <content type="html"><![CDATA[<p>每个 HTML 文件中的开头都有一个 Doctype，他的作用？</p><pre><code>&lt;!DOCTYPE&gt; 生命位于文档中最前面的位置，处于&lt;html&gt;标签之前。此标签可以告诉浏览器文档使用哪种HTML或XHTML规范</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> HTML </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HTML </tag>
             
         </tags>
       
